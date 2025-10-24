@@ -95,26 +95,23 @@ Dokumentasi API interaktif (Swagger UI) dapat diakses melalui:
 ### 1. Fungsionalitas Event (CRUD)
 Admin dapat melakukan fungsionalitas CRUD (Create, Read, Update, Delete) pada data 'event'.
 
-* [Lihat Tampilan Event](assets/Screenshot/OPT_Event_Tampilan.png)
-* [Hapus Event](assets/Screenshot/OPT_Event_Hapus.png)
-* [Melihat Form Event (Uji Coba)](assets/Screenshot/OPT_Event_TryOut.png)
-* [Melihat Event (Full)](assets/Screenshot/OPT_Event_Tampilan(Full).png)
-* [Memperbarui Event (Uji Coba)](assets/Screenshot/OPT_Event_TryOut_Update.png)
-* [Tampilan Awal](assets/Screenshot/Tampilan_Awal.png)
+* [Lihat Tampilan Event](Screenshot/GET_Event_Tampilan.png)
+* [Hapus Event](Screenshot/DELETE_Event_Tampilan.png)
+* [Melihat Form Event (Uji Coba)](Screenshot/POST_Event_TryOut.png)
+* [Melihat Event (Full)](Screenshot/GET_Event.png)
+* [Memperbarui Event (Uji Coba)](Screenshot/PUT_Event_TryOut.png)
+* [Tampilan Awal](Screenshot/GET_Event_Tampilan.png)
 
 ### 2. Alur Pengguna (Frontend & Pendaftaran)
 Pengguna umum dapat melihat daftar 'event' dan mendaftarkan diri melalui 'frontend' (`index.html`).
 
-* [Lihat Tampilan Frontend](assets/Screenshot/OPT_Event_Tampilan.png)
-* [Melihat Event (Frontend)](assets/Screenshot/Tampilan_Awal.png)
-* [Uji Coba Pendaftaran Peserta](assets/Screenshot/OPT_Peserta_TryOut_Pendaftaran.png)
-* [Tampilan Peserta Terdaftar](assets/Screenshot/OPT_Peserta_Tampilan.png)
+* [Lihat Tampilan Frontend](Screenshot/GET_Event_Tampilan.png)
+* [Melihat Event (Frontend)](Screenshot/GET_Event_Tampilan.png)
+* [Uji Coba Pendaftaran Peserta](Screenshot/POST_Participant_TryOut.png)
+* [Tampilan Peserta Terdaftar](Screenshot/GET_Participant_Tampilan.png)
 
 ### 3. Melihat Peserta (Feedback Panitia)
 Panitia dapat melihat daftar lengkap semua peserta yang telah terdaftar.
 
-* [Lihat Tampilan Request Data](assets/Screenshot/OPT_Participant_Tampilan.png)
-* [Hapus Peserta](assets/Screenshot/OPT_Participant_Hapus.png)
-* [Melihat Semua Peserta (Uji Coba)](assets/Screenshot/OPT_Participant_TryOut.png)
-
-*(Catatan: Harap sesuaikan path file gambar di atas agar sesuai dengan struktur folder di repositori Anda).*
+* [Lihat Tampilan Request Data](Screenshot/GET_Participant_Tampilan.png)
+* [Melihat Semua Peserta (Uji Coba)](Screenshot/GET_Participant_TryOut.png)
