@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Event Registration</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background: #f4f7f6; }
+        h1, h2 { color: #333; }
+        .container { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        #event-list .event { border-bottom: 1px solid #eee; padding: 10px 0; }
+        form { display: flex; flex-direction: column; gap: 10px; max-width: 400px; }
+        input, select, button { padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #007bff; color: white; cursor: pointer; border: none; }
+        #message { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Platform Registrasi Event Kampus</h1>
+
+    <div class="container">
+        <h2>Daftar Event (Tugas 2)</h2>
+        <div id="event-list">Memuat...</div>
+    </div>
+
+    <div class="container">
+        <h2>Daftar ke Event (Tugas 3)</h2>
+        <form id="registration-form">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            
+            <label for="event_id">Pilih Event:</label>
+            <select id="event_id" required>
+                <option value="">Pilih salah satu...</option>
+            </select>
+            
+            <button type="submit">Daftar</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        const API_URL = 'http://127.0.0.1:8000';
+
+        // Fungsi untuk mengambil data /events
+        async function loadEvents() {
+            const eventList = document.getElementById('event-list');
+            const eventSelect = document.getElementById('event_id');
+            eventList.innerHTML = 'Memuat event...';
+
+            try {
+                const response = await fetch(`${API_URL}/events`);
+                const events = await response.json();
+                
+                eventList.innerHTML = '';
+                eventSelect.innerHTML = '<option value="">Pilih salah satu...</option>';
+
+                events.forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = 'event';
+                    eventDiv.innerHTML = `<strong>${event.title}</strong> (${event.date}) - ${event.location} [Kuota: ${event.quota}]`;
+                    eventList.appendChild(eventDiv);
+                    
+                    const option = document.createElement('option');
+                    option.value = event.id;
+                    option.textContent = `${event.title} (${event.location})`;
+                    eventSelect.appendChild(option);
+                });
+            } catch (error) {
+                eventList.innerHTML = 'Gagal memuat event. Pastikan backend berjalan.';
+            }
+        }
+
+        // Fungsi untuk mendaftar (POST /register)
+        document.getElementById('registration-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const message = document.getElementById('message');
+            message.textContent = 'Mendaftarkan...';
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                event_id: parseInt(document.getElementById('event_id').value)
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/register`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.detail);
+
+                message.style.color = 'green';
+                message.textContent = `Sukses! Pendaftaran berhasil (ID: ${result.id}).`;
+                document.getElementById('registration-form').reset();
+            
+            } catch (error) {
+                message.style.color = 'red';
+                message.textContent = `Error: ${error.message}`;
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', loadEvents);
+    </script>
+</body>
+</html>
