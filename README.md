@@ -136,25 +136,38 @@ Semua *endpoint* dapat diuji melalui dokumentasi interaktif (Swagger UI).
 
 ---
 
-## 🚀 Screenshot Hasil Uji Coba
-*(Berikut adalah screenshot pengujian dari `backend/` dan `frontend/`)*
+## 📸 Screenshot Hasil Uji Coba
 
-### Uji Coba CRUD Event (dari Swagger UI)
-[Detail Event (Hasil GET /events)](Screenshot/GET_Event.png)
-[Create Event (POST /events TryOut)](Screenshot/POST_Event_TryOut.png)
-[Create Event Sukses (Hasil POST /events)](Screenshot/POST_Event.png)
-[Mengubah data Event (PUT /events TryOut)](Screenshot/PUT_Event_TryOut.png)
-[Berhasil mengubah data event (Hasil PUT /events)](Screenshot/PUT_Event.png)
-[Menghapus Event (DELETE /events TryOut)](Screenshot/DELETE_Event_TryOut.png)
-[Berhasil menghapus data event (Hasil DELETE /events)](Screenshot/DELETE_Event.png)
+Berikut adalah dokumentasi visual dari alur pengujian API menggunakan Swagger UI dan *frontend*.
 
-### Hasil Uji Coba User (dari `frontend/index.html`)
-[User melihat data event (Tampilan GET /events)](Screenshot/GET_Event_Tampilan.png)
-[User register dan memilih daftar Event (Tampilan POST /register)](Screenshot/POST_Participant_Tampilan.png)
-[User berhasil register (Hasil POST /register)](Screenshot/POST_Participant.png)
+---
+### 1. Manajemen Event (Endpoint Publik)
 
-### Hasil uji coba participants (dari Swagger UI)
-[Tampilan data participant event (Tampilan GET /participants)](Screenshot/GET_Participant_Tampilan.png)
-[Uji Coba GET /participants](Screenshot/GET_Participant_TryOut.png)
-[Melihat data participant sukses (Hasil GET /participants)](Screenshot/GET_Participant.png)
+Siapa pun dapat melakukan operasi CRUD (Create, Read, Update, Delete) pada data *event*.
+
+| Aksi | Tampilan Request (Uji Coba) | Hasil Sukses |
+| :--- | :---: | :---: |
+| **Melihat Semua Event (GET)** | ![Uji Coba Melihat Event](Screenshot/GET_Event_TryOut.png) | ![Hasil Melihat Event](Screenshot/GET_Event.png) |
+| **Membuat Event Baru (POST)** | ![Uji Coba Membuat Event](Screenshot/POST_Event_TryOut.png) | ![Hasil Membuat Event](Screenshot/POST_Event.png) |
+| **Memperbarui Event (PUT)** | ![Uji Coba Memperbarui Event](Screenshot/PUT_Event_TryOut.png) | ![Hasil Memperbarui Event](Screenshot/PUT_Event.png) |
+| **Menghapus Event (DELETE)**| ![Uji Coba Menghapus Event](Screenshot/DELETE_Event_TryOut.png) | ![Hasil Menghapus Event](Screenshot/DELETE_Event.png) |
+
+---
+### 2. Alur Pengguna (Frontend & Pendaftaran)
+
+Pengguna umum dapat melihat daftar *event* dan mendaftarkan diri melalui *frontend* (`index.html`) atau API.
+
+| Aksi | Tampilan Frontend | Hasil Sukses (dari API) |
+| :--- | :---: | :---: |
+| **Melihat Event (Frontend)** | ![Melihat Event di Frontend](Screenshot/GET_Event_Tampilan.png) | (Tampilan di atas) |
+| **Mendaftar (Frontend)** | ![Form Pendaftaran](Screenshot/POST_Participant_Tampilan.png) | ![Berhasil Mendaftar](Screenshot/POST_Participant.png) |
+
+---
+### 3. Melihat Peserta (Endpoint Publik)
+
+Siapa pun dapat melihat daftar lengkap semua peserta yang telah terdaftar.
+
+| Aksi | Tampilan Request (Uji Coba) | Hasil Sukses |
+| :--- | :---: | :---: |
+| **Melihat Semua Peserta (GET)** | ![Uji Coba Melihat Peserta](Screenshot/GET_Participant_TryOut.png) | ![Hasil Melihat Peserta](Screenshot/GET_Participant.png) |
 ````
