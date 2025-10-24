@@ -1,34 +1,120 @@
-## 📸 Screenshot Hasil Uji Coba
+# [Campus-Event]
 
-Berikut adalah dokumentasi visual dari alur pengujian API menggunakan Swagger UI dan *frontend*.
+(Tambahkan deskripsi singkat tentang proyek Anda di sini. Jelaskan apa yang dilakukan proyek ini.)
+
+## Cara Menjalankan Proyek
+
+Berikut adalah langkah-langkah untuk menginstal dan menjalankan proyek ini di lingkungan lokal Anda.
+
+### 1. Persiapan Awal
+
+1.  **Clone Repositori**
+    ```bash
+    git clone [URL_GITHUB_ANDA]
+    cd [NAMA_FOLDER_PROYEK]
+    ```
+
+2.  **Siapkan Virtual Environment (Venv)**
+    * Pindah ke direktori `backend`:
+        ```bash
+        cd backend
+        ```
+    * Buat *virtual environment* baru:
+        ```bash
+        # Windows
+        python -m venv venv
+
+        # macOS/Linux
+        python3 -m venv venv
+        ```
+    * Aktifkan *virtual environment*:
+        ```bash
+        # Windows
+        .\venv\Scripts\activate
+
+        # macOS/Linux
+        source venv/bin/activate
+        ```
+
+3.  **Install Dependensi**
+    * Pastikan *virtual environment* Anda sudah aktif (terlihat `(venv)` di awal terminal).
+    * Install semua *library* yang dibutuhkan:
+        ```bash
+        pip install -r requirements.txt
+        ```
+
+### 2. Pengaturan Database
+
+1.  **Buat Database Baru**
+    * Buka *client* MySQL Anda (misalnya: terminal, DBeaver, atau phpMyAdmin).
+    * Buat database baru dengan nama `campus_events_db`.
+        ```sql
+        CREATE DATABASE campus_events_db;
+        ```
+
+2.  **Impor Skema/Data**
+    * Impor file `.sql` (yang Anda sebut sebagai `surijet.sql`) ke dalam database `campus_events_db` yang baru saja Anda buat.
+    * *Catatan: Anda mungkin perlu menyesuaikan file koneksi database di dalam kode backend Anda (misalnya di `main.py` atau file `config.py`) agar sesuai dengan username dan password MySQL Anda.*
+
+### 3. Menjalankan Server
+
+1.  **Jalankan Server Backend**
+    * Pastikan Anda masih berada di dalam folder `backend` dan *virtual environment* Anda aktif.
+    * Jalankan server Uvicorn:
+        ```bash
+        uvicorn main:app --reload
+        ```
+    * Server sekarang akan berjalan di `http://127.0.0.1:8000`.
+
+2.  **Jalankan Frontend**
+    * Buka folder `frontend` di file explorer Anda.
+    * Klik dua kali pada file `index.html` untuk membukanya di browser.
 
 ---
-### 1. Manajemen Event (Endpoint Publik)
 
-Siapa pun dapat melakukan operasi CRUD (Create, Read, Update, Delete) pada data *event*.
+## Daftar Endpoint API
 
-| Aksi | Tampilan Request (Uji Coba) | Hasil Sukses |
-| :--- | :---: | :---: |
-| **Melihat Semua Event (GET)** | ![Uji Coba Melihat Event](Screenshot/GET_Event_TryOut.png) | ![Hasil Melihat Event](Screenshot/GET_Event.png) |
-| **Membuat Event Baru (POST)** | ![Uji Coba Membuat Event](Screenshot/POST_Event_TryOut.png) | ![Hasil Membuat Event](Screenshot/POST_Event.png) |
-| **Memperbarui Event (PUT)** | ![Uji Coba Memperbarui Event](Screenshot/PUT_Event_TryOut.png) | ![Hasil Memperbarui Event](Screenshot/PUT_Event.png) |
-| **Menghapus Event (DELETE)**| ![Uji Coba Menghapus Event](Screenshot/DELETE_Event_TryOut.png) | ![Hasil Menghapus Event](Screenshot/DELETE_Event.png) |
+Dokumentasi API interaktif (Swagger UI) dapat diakses melalui:
+`http://127.0.0.1:8000/docs`
+
+### Events
+* `GET /events` - [Tugas: 1] [Riset: 0] - Menampilkan semua 'event' yang ada.
+* `POST /events` - [Tugas: 2] [Riset: 0] - Mendaftarkan 'event' baru.
+* `GET /events/{id}` - [Tugas: 3] [Riset: 0] - Menampilkan 'event' berdasarkan ID.
+* `PUT /events/{id}` - [Tugas: 4] [Riset: 0] - Mengubah data 'event' berdasarkan ID.
+* `DELETE /events/{id}` - [Tugas: 5] [Riset: 0] - Menghapus 'event' berdasarkan ID.
+
+### Participants
+* `GET /participants` - [Tugas: 5] [Riset: 0] - Menampilkan semua peserta yang terdaftar.
+* `POST /participants` - [Tugas: 6] [Riset: 0] - Mendaftarkan peserta baru (via 'event').
 
 ---
+
+## Fungsionalitas & Alur Pengguna
+
+### 1. Fungsionalitas Event (CRUD)
+Admin dapat melakukan fungsionalitas CRUD (Create, Read, Update, Delete) pada data 'event'.
+
+* [Lihat Tampilan Event](assets/Screenshot/OPT_Event_Tampilan.png)
+* [Hapus Event](assets/Screenshot/OPT_Event_Hapus.png)
+* [Melihat Form Event (Uji Coba)](assets/Screenshot/OPT_Event_TryOut.png)
+* [Melihat Event (Full)](assets/Screenshot/OPT_Event_Tampilan(Full).png)
+* [Memperbarui Event (Uji Coba)](assets/Screenshot/OPT_Event_TryOut_Update.png)
+* [Tampilan Awal](assets/Screenshot/Tampilan_Awal.png)
+
 ### 2. Alur Pengguna (Frontend & Pendaftaran)
+Pengguna umum dapat melihat daftar 'event' dan mendaftarkan diri melalui 'frontend' (`index.html`).
 
-Pengguna umum dapat melihat daftar *event* dan mendaftarkan diri melalui *frontend* (`index.html`) atau API.
+* [Lihat Tampilan Frontend](assets/Screenshot/OPT_Event_Tampilan.png)
+* [Melihat Event (Frontend)](assets/Screenshot/Tampilan_Awal.png)
+* [Uji Coba Pendaftaran Peserta](assets/Screenshot/OPT_Peserta_TryOut_Pendaftaran.png)
+* [Tampilan Peserta Terdaftar](assets/Screenshot/OPT_Peserta_Tampilan.png)
 
-| Aksi | Tampilan Frontend | Hasil Sukses (dari API) |
-| :--- | :---: | :---: |
-| **Melihat Event (Frontend)** | ![Melihat Event di Frontend](Screenshot/GET_Event_Tampilan.png) | (Tampilan di atas) |
-| **Mendaftar (Frontend)** | ![Form Pendaftaran](Screenshot/POST_Participant_Tampilan.png) | ![Berhasil Mendaftar](Screenshot/POST_Participant.png) |
+### 3. Melihat Peserta (Feedback Panitia)
+Panitia dapat melihat daftar lengkap semua peserta yang telah terdaftar.
 
----
-### 3. Melihat Peserta (Endpoint Publik)
+* [Lihat Tampilan Request Data](assets/Screenshot/OPT_Participant_Tampilan.png)
+* [Hapus Peserta](assets/Screenshot/OPT_Participant_Hapus.png)
+* [Melihat Semua Peserta (Uji Coba)](assets/Screenshot/OPT_Participant_TryOut.png)
 
-Siapa pun dapat melihat daftar lengkap semua peserta yang telah terdaftar.
-
-| Aksi | Tampilan Request (Uji Coba) | Hasil Sukses |
-| :--- | :---: | :---: |
-| **Melihat Semua Peserta (GET)** | ![Uji Coba Melihat Peserta](Screenshot/GET_Participant_TryOut.png) | ![Hasil Melihat Peserta](Screenshot/GET_Participant.png) |
+*(Catatan: Harap sesuaikan path file gambar di atas agar sesuai dengan struktur folder di repositori Anda).*
